@@ -1,0 +1,35 @@
+<h1 class='page-header'>Leaderboard</h1>
+
+<table cellpadding="0" cellspacing="0" border="0" class="table table-hover table-bordered table-striped" id="example">
+  <thead>
+    <tr>
+      <th><a href="#" data-toggle="tooltip" title="Ranking of the Player">Rank</a></th>
+      <th><a href="#" data-toggle="tooltip" title="Name of the Player">Name</a></th>
+      <th><a href="#" data-toggle="tooltip" title="Current ELO Score">Score</a></th>
+      <th><a href="#" data-toggle="tooltip" title="Number of Games Played">Matches Played</a></th>
+      <th><a href="#" data-toggle="tooltip" title="Number of Games Played">Win Matches</a></th>
+      <th><a href="#" data-toggle="tooltip" title="Number of Games Played">Loss Matches</a></th>
+      <th><a href="#" data-toggle="tooltip" title="Number of Games Played">Average score</a></th>
+      <th><a href="#" data-toggle="tooltip" title="Number of Games Played">Highest score</a></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each_with_index do |player, index| %>
+      <%if player.played > 10 %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= link_to get_name(player), player_path(player) %></td>
+          <td><%= player.ranking %></td>
+          <td><%= player.played %></td>
+          <td><%= player.wins_matches %></td>
+          <td><%= player.loss_matches %></td>
+          <td><%= player.average_score %></td>
+          <td><%= player.highest_score %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'View Players', players_path, class: "btn btn-success min-width-btn" %>
+<%= link_to 'View Matches', matches_path, class: "btn btn-success min-width-btn" %>

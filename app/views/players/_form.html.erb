@@ -1,0 +1,42 @@
+<%= form_with(model: player, :html => {:class => 'needs-validation was-validated'}) do |form| %>
+  <% if player.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger" role="alert">
+      <h2><%= pluralize(player.errors.count, "error") %> prohibited this player from being saved:</h2>
+
+      <ul>
+        <% player.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control col-3", placeholder: "Enter Name", :required => true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_area :address, class: "form-control col-3", placeholder: "Enter Address" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: "form-control col-3", placeholder: "Enter Phone", :required => true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control col-3", placeholder: "Enter Email"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :joined_date %>
+    <%= form.date_field :joined_date, class: "form-control col-3" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save", class: "btn btn-success min-width-btn" %>
+    <%= link_to 'Back', players_path, class: "btn btn-primary" %>
+  </div>
+<% end %>

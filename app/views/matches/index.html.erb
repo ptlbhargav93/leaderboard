@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <h1>Match History</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Player1</th>
+        <th>Player2</th>
+        <th>Score</th>
+        <th>Result</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @matches.each do |match| %>
+        <tr>
+          <td><%= match.date_played.strftime('%b %e') %></td>
+          <td><%= match.player1.name %></td>
+          <td><%= match.player2.name %></td>
+          <td><%= match.scores %></td>
+          <td><%= match.game_result %></td>
+          <td><%= link_to 'Edit', edit_match_path(match), class:"btn btn-primary min-width-btn" %></td>
+          <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger min-width-btn" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>
+
+<%= link_to 'New Match', new_match_path, class:"btn btn-success min-width-btn" %>
+<%= link_to 'View Players', players_path, class:"btn btn-success min-width-btn" %>
+<%= link_to 'View Leaderboard', root_path, class:"btn btn-success min-width-btn" %>
